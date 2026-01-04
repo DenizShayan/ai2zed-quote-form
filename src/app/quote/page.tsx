@@ -3,59 +3,97 @@
 import { useState } from "react";
 
 export default function QuotePage() {
-
     const [fullName, setFullName] = useState("");
     const [phone, setPhone] = useState("");
+    const [isDark, setIsDark] = useState(true);
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        // Minimal for now — later we’ll send it to an API route
         alert(`Thanks! Name: ${fullName}, Phone: ${phone}`);
     }
 
     return (
-        <main className="min-h-screen bg-zinc-950 text-zinc-100">
+        <main
+            className={`min-h-screen ${isDark ? "bg-zinc-950 text-zinc-100" : "bg-zinc-100 text-zinc-900"
+                }`}
+        >
             <div className="mx-auto max-w-xl px-4 py-10">
-                <h1 className="text-3xl font-semibold tracking-light">Request a Free Quote</h1>
-                <p className="mt-2 text-zinc-300">
+                <h1 className="text-3xl font-semibold tracking-tight">
+                    Request a Free Quote
+                </h1>
+
+                <p className={`mt-2 ${isDark ? "text-zinc-300" : "text-zinc-600"}`}>
                     Tell us about your project and we'll get back to you.
                 </p>
 
+                <button
+                    onClick={() => setIsDark(!isDark)}
+                    className={`mt-6 rounded-lg border px-3 py-1 text-sm ${isDark
+                            ? "border-zinc-700 text-zinc-200"
+                            : "border-zinc-400 text-zinc-700"
+                        }`}
+                >
+                    Switch to {isDark ? "light" : "dark"} mode
+                </button>
+
                 <form
                     onSubmit={handleSubmit}
-                    className="mt-8 space-y-5 rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6"
+                    className={`mt-8 space-y-5 rounded-2xl border p-6 ${isDark
+                            ? "border-zinc-800 bg-zinc-900/40"
+                            : "border-zinc-300 bg-white"
+                        }`}
                 >
                     <div className="space-y-2">
-                        <label className="text-sm text-zinc-200">Full Name *</label>
+                        <label
+                            className={`text-sm ${isDark ? "text-zinc-200" : "text-zinc-700"
+                                }`}
+                        >
+                            Full Name *
+                        </label>
+
                         <input
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
                             placeholder="Deniz Shayan"
-                            className="w-full rounded-xl border border-zinc-800 bg-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 outline-none focus:border-zinc-600"
+                            className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
+                                    ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                    : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                }`}
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <label className="text-sm text-zinc-200">Phone Number *</label>
+                        <label
+                            className={`text-sm ${isDark ? "text-zinc-200" : "text-zinc-700"
+                                }`}
+                        >
+                            Phone Number *
+                        </label>
+
                         <input
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             placeholder="(416) 123-4567"
-                            inputmode="tel"
-                            className="w-full rounded-xl border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 outline-none focus:border-zinc-600"
+                            inputMode="tel"
+                            className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
+                                    ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                    : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                }`}
                         />
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full rounded-xl bg-zinc-100 px-4 py-3 front-medium text-zinc-950 transition hover:opacity-90"
-                        >
+                        className={`w-full rounded-xl px-4 py-3 font-medium transition ${isDark
+                                ? "bg-zinc-100 text-zinc-950 hover:opacity-90"
+                                : "bg-zinc-900 text-white hover:opacity-90"
+                            }`}
+                    >
                         Submit
                     </button>
 
-
-                    <p className="text-xs text-zinc-400">
-                      (Temporary) This will show an alert. Next step: send to an API route.
+                    <p className={`text-xs ${isDark ? "text-zinc-400" : "text-zinc-500"}`}>
+                        (Temporary) This will show an alert. Next step: send to an API route.
                     </p>
                 </form>
             </div>
