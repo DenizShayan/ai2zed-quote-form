@@ -6,10 +6,15 @@ export default function QuotePage() {
     const [fullName, setFullName] = useState("");
     const [phone, setPhone] = useState("");
     const [isDark, setIsDark] = useState(true);
+    const [workType, setWorkType] = useState("kitchen");
+    const [description, setDescription] = useState("");
+
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        alert(`Thanks! Name: ${fullName}, Phone: ${phone}`);
+        alert(
+            `Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍🏽`
+        );
     }
 
     return (
@@ -29,8 +34,8 @@ export default function QuotePage() {
                 <button
                     onClick={() => setIsDark(!isDark)}
                     className={`mt-6 rounded-lg border px-3 py-1 text-sm ${isDark
-                            ? "border-zinc-700 text-zinc-200"
-                            : "border-zinc-400 text-zinc-700"
+                        ? "border-zinc-700 text-zinc-200"
+                        : "border-zinc-400 text-zinc-700"
                         }`}
                 >
                     Switch to {isDark ? "light" : "dark"} mode
@@ -39,8 +44,8 @@ export default function QuotePage() {
                 <form
                     onSubmit={handleSubmit}
                     className={`mt-8 space-y-5 rounded-2xl border p-6 ${isDark
-                            ? "border-zinc-800 bg-zinc-900/40"
-                            : "border-zinc-300 bg-white"
+                        ? "border-zinc-800 bg-zinc-900/40"
+                        : "border-zinc-300 bg-white"
                         }`}
                 >
                     <div className="space-y-2">
@@ -56,8 +61,8 @@ export default function QuotePage() {
                             onChange={(e) => setFullName(e.target.value)}
                             placeholder="Deniz Shayan"
                             className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
-                                    ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
-                                    : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
                                 }`}
                         />
                     </div>
@@ -76,8 +81,49 @@ export default function QuotePage() {
                             placeholder="(416) 123-4567"
                             inputMode="tel"
                             className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
-                                    ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
-                                    : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                }`}
+                        />
+
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className={`text-sm ${isDark ? "text-zinc-200" : "text-zinc-700"}`}>
+                            Type of Work *
+                        </label>
+
+                        <select
+                            value={workType}
+                            onChange={(e) => setWorkType(e.target.value)}
+                            className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
+                                ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
+                                }`}
+                        >
+                            <option value="kitchen">Kitchen Remodeling</option>
+                            <option value="bathroom">Bathroom Renovation</option>
+                            <option value="flooring">Flooring</option>
+                            <option value="painting">Painting</option>
+                            <option value="framing">Framing</option>
+                            <option value="extension">Extension</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label className={`text-sm ${isDark ? "text-zinc-200" : "text-zinc-700"}`}>
+                            Project details *
+                        </label>
+
+                        <textarea
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            placeholder="Describe what you need (size, timeline, location, etc.)"
+                            rows={5}
+                            className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
+                                ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
+                                : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
                                 }`}
                         />
                     </div>
@@ -85,8 +131,8 @@ export default function QuotePage() {
                     <button
                         type="submit"
                         className={`w-full rounded-xl px-4 py-3 font-medium transition ${isDark
-                                ? "bg-zinc-100 text-zinc-950 hover:opacity-90"
-                                : "bg-zinc-900 text-white hover:opacity-90"
+                            ? "bg-zinc-100 text-zinc-950 hover:opacity-90"
+                            : "bg-zinc-900 text-white hover:opacity-90"
                             }`}
                     >
                         Submit
