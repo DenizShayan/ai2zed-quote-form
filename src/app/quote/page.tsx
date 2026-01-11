@@ -8,13 +8,21 @@ export default function QuotePage() {
     const [isDark, setIsDark] = useState(true);
     const [workType, setWorkType] = useState("kitchen");
     const [description, setDescription] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "error" | "success">("idle");
+    const [message, setMessage] = useState("");
 
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        alert(
-            `Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍🏽`
-        );
+
+        setStatus("idle");
+        setMessage("");
+
+        // alert(
+        //     `Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍🏽`
+        //);
+
+
     }
 
     return (
@@ -121,7 +129,7 @@ export default function QuotePage() {
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="Describe what you need (size, timeline, location, etc.)"
                             rows={5}
-                            className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
+                            className={`w-full resize-y rounded-xl border px-4 py-3 outline-none ${isDark
                                 ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
                                 : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
                                 }`}
@@ -132,7 +140,7 @@ export default function QuotePage() {
                         type="submit"
                         className={`w-full rounded-xl px-4 py-3 font-medium transition ${isDark
                             ? "bg-zinc-100 text-zinc-950 hover:opacity-90"
-                            : "bg-zinc-900 text-white hover:opacity-90"
+                            : "bg-sky-600 text-white hover:opacity-90"
                             }`}
                     >
                         Submit
