@@ -67,7 +67,7 @@ export default function QuotePage() {
                         <input
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
-                            placeholder="Deniz Shayan"
+                            placeholder="Name Family"
                             className={`w-full rounded-xl border px-4 py-3 outline-none ${isDark
                                 ? "border-zinc-800 bg-zinc-950 text-zinc-100 focus:border-zinc-600"
                                 : "border-zinc-300 bg-zinc-50 text-zinc-900 focus:border-zinc-500"
