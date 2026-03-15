@@ -22,6 +22,15 @@ export default function QuotePage() {
         //     `Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍🏽`
         //);
 
+        console.log("Quote request submitted");
+
+        console.log({
+            fullName,
+            phone,
+            workType,
+            description,
+        });
+
 
     }
 
