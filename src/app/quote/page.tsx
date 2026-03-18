@@ -15,23 +15,18 @@ export default function QuotePage() {
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
 
-        setStatus("idle");
-        setMessage("");
+        setStatus("success");
+        setMessage("Thanks! Your request has been sent. We'll contact you soon.");
 
-        // alert(
-        //     `Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍🏽`
-        //);
+        alert(`Thanks! ...`);
 
         console.log("Quote request submitted");
+        console.log({ fullName, phone, workType, description });
 
-        console.log({
-            fullName,
-            phone,
-            workType,
-            description,
-        });
-
-
+        setFullName("");
+        setPhone("");
+        setWorkType("kitchen");
+        setDescription("");
     }
 
     return (
@@ -155,9 +150,21 @@ export default function QuotePage() {
                         Submit
                     </button>
 
+                    {status === "success" && (
+                        <p className="text-green-500 text-sm mt-2">
+                            {message}
+                        </p>
+                    )}
+
                     <p className={`text-xs ${isDark ? "text-zinc-400" : "text-zinc-500"}`}>
                         (Temporary) This will show an alert. Next step: send to an API route.
                     </p>
+
+                    setFullName("");
+                    setPhone("");
+                    setWorkType("kitchen");
+                    setDescription("");
+
                 </form>
             </div>
         </main>
