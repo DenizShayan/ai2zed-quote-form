@@ -18,7 +18,7 @@ export default function QuotePage() {
         setStatus("success");
         setMessage("Thanks! Your request has been sent. We'll contact you soon.");
 
-        alert(`Thanks! ...`);
+        alert("Thanks! \nName: ${fullName}\nPhone: ${phone}\nType: ${workType}\nDetails: ${description}\nRequest submitted 👍");
 
         console.log("Quote request submitted");
         console.log({ fullName, phone, workType, description });
@@ -160,10 +160,6 @@ export default function QuotePage() {
                         (Temporary) This will show an alert. Next step: send to an API route.
                     </p>
 
-                    setFullName("");
-                    setPhone("");
-                    setWorkType("kitchen");
-                    setDescription("");
 
                 </form>
             </div>
